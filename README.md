@@ -17,7 +17,7 @@ Airwallex CLI is available for macOS and Linux as a single self-contained binary
 Auto-detects your OS and architecture, installs to `~/.local/bin/airwallex`:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/airwallex/airwallex-cli/master/install.sh | sh
+curl -fsSL https://static.airwallex.com/developer-tools/airwallex-cli/install.sh | sh
 ```
 
 ## Quickstart
