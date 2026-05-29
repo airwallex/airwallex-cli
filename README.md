@@ -14,11 +14,21 @@ The Airwallex CLI helps you manage your Airwallex account right from the termina
 
 Airwallex CLI is available for macOS and Linux as a single self-contained binary.
 
-Auto-detects your OS and architecture, installs to `~/.local/bin/airwallex`:
+Auto-detects your OS and architecture, verifies the SHA256 checksum, and installs to `~/.local/bin/airwallex`:
 
 ```sh
-curl -fsSL https://static.airwallex.com/developer-tools/airwallex-cli/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/airwallex/airwallex-cli/master/install.sh | sh
 ```
+
+Environment variables:
+
+| Variable | Description |
+|----------|-------------|
+| `AIRWALLEX_VERSION` | Pin a specific release tag (e.g. `v0.1.0`). Defaults to the latest GitHub release. |
+| `AIRWALLEX_INSTALL_DIR` | Install location. Defaults to `$HOME/.local/bin`. |
+| `AIRWALLEX_SKIP_CHECKSUM` | **Local development only.** Set to `1` to bypass SHA256 verification. Never use this in production or CI. |
+
+Exit codes: `0` success, `1` generic failure, `2` unsupported platform, `3` checksum mismatch, `4` network failure.
 
 ## Quickstart
 
@@ -51,4 +61,3 @@ For a full reference, see the [Airwallex API docs](https://www.airwallex.com/doc
 ## Feedback
 
 Got feedback? Open an issue or run `airwallex feedback`.
-
