@@ -69,7 +69,7 @@ esac
 #   ok()      : a success summary line (green check)
 #   warn()    : non-fatal warning (yellow bang)
 #   err()     : fatal error (red x), exits with the supplied code (default 1)
-header() { printf '\n%s%sairwallex CLI installer%s\n\n' "$BOLD" "$BLUE" "$RESET"; }
+header() { printf '\n%s%sAirwallex CLI installer%s\n\n' "$BOLD" "$BLUE" "$RESET"; }
 step()   { printf '  %s%s%s %s\n' "$BLUE" "$G_STEP" "$RESET" "$*"; }
 ok()     { printf '  %s%s%s %s\n' "$GREEN" "$G_OK" "$RESET" "$*"; }
 warn()   { printf '  %s%s%s %s\n' "$YELLOW" "$G_WARN" "$RESET" "$*" >&2; }
