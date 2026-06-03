@@ -58,6 +58,14 @@ airwallex [command] --help
 
 For a full reference, see the [Airwallex API docs](https://www.airwallex.com/docs/api).
 
+## Important Notice
+
+> **Beta Software.** This CLI tool is provided on an "as-is" basis for use with Airwallex APIs. By downloading and using this software, you acknowledge that:
+
+- **Ownership.** This CLI tool and installation script are proprietary software. All rights are reserved by Airwallex. You may not redistribute, modify, or reverse-engineer this software.
+- **Beta Software.** This is a pre-release beta version. It is actively developed and may contain bugs or breaking changes.
+- **No Warranty.** THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL AIRWALLEX BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.
+
 ## Feedback
 
 Got feedback? Open an issue or run `airwallex feedback`.
