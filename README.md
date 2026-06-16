@@ -1,6 +1,6 @@
 # Airwallex CLI
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/airwallex/airwallex-cli)
+![Version](https://img.shields.io/badge/version-0.2.0-orange)
 
 The Airwallex CLI helps you manage your Airwallex account right from the terminal.
 
@@ -24,7 +24,7 @@ Environment variables:
 
 | Variable | Description |
 |----------|-------------|
-| `AIRWALLEX_VERSION` | Pin a specific release tag (e.g. `v0.1.0`). Defaults to the latest GitHub release. |
+| `AIRWALLEX_VERSION` | Pin a specific release tag (e.g. `v0.1.0`). Defaults to the version bundled in the installer script. |
 | `AIRWALLEX_INSTALL_DIR` | Install location. Defaults to `$HOME/.local/bin`. |
 | `AIRWALLEX_SKIP_CHECKSUM` | **Local development only.** Set to `1` to bypass SHA256 verification. Never use this in production or CI. |
 

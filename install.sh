@@ -5,7 +5,7 @@
 #   curl -fsSL https://raw.githubusercontent.com/airwallex/airwallex-cli/master/install.sh | sh
 #
 # Environment variables:
-#   AIRWALLEX_VERSION         pin a specific release (default: latest, e.g. v0.1.0)
+#   AIRWALLEX_VERSION         pin a specific release (default: version bundled in script, e.g. v0.1.0)
 #   AIRWALLEX_INSTALL_DIR     install location (default: $HOME/.local/bin)
 #   AIRWALLEX_SKIP_CHECKSUM   set to 1 to skip SHA256 verification (local-dev only)
 #
@@ -167,23 +167,8 @@ check_writable() {
     fi
 }
 
-# Resolve the latest release tag from the GitHub API. Asset filenames are
-# versioned (airwallex_0.1.0_...), so we can't use the
-# /releases/latest/download/ redirect — we have to know the
-# concrete version first.
-resolve_latest_version() {
-    api_url="https://api.github.com/repos/${REPO}/releases/latest"
-    # `grep -E "tag_name"` then a portable cut to extract the value works
-    # without jq, which is rarely pre-installed on minimal Linux images.
-    tag=$(curl -fsSL "$api_url" 2>/dev/null \
-        | grep -E '"tag_name"[[:space:]]*:' \
-        | head -n 1 \
-        | sed -E 's/.*"tag_name"[[:space:]]*:[[:space:]]*"([^"]+)".*/\1/')
-    if [ -z "$tag" ]; then
-        err "Failed to resolve latest version from $api_url" "$EXIT_NETWORK"
-    fi
-    echo "$tag"
-}
+# Baked in at release time. Kept in sync with pyproject.toml by the CI check-version job.
+LATEST_VERSION="v0.2.0"
 
 # Compute the SHA256 of $1 and echo the bare hex digest. Prefers
 # `sha256sum` (GNU coreutils, default on Linux); falls back to `shasum
@@ -259,9 +244,9 @@ main() {
     header
 
     if [ "$VERSION" = "latest" ]; then
-        VERSION=$(resolve_latest_version)
+        VERSION="$LATEST_VERSION"
     fi
-    step "Latest version: ${BOLD}${VERSION}${RESET}"
+    step "Version: ${BOLD}${VERSION}${RESET}"
 
     # Strip a leading "v" so the asset filename matches the package version
     # embedded in pyproject.toml (e.g. v0.1.0 -> 0.1.0).
