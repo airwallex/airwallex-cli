@@ -1,6 +1,6 @@
 # Airwallex CLI
 
-![Version](https://img.shields.io/badge/version-0.2.1-orange)
+![Version](https://img.shields.io/badge/version-0.3.0-orange)
 
 The Airwallex CLI helps you manage your Airwallex account right from the terminal.
 
@@ -39,6 +39,17 @@ airwallex auth login --prod
 # Run `--help` for detailed information about CLI commands
 airwallex [command] --help
 ```
+
+## Credential storage
+
+The CLI stores your OAuth tokens in your operating system's secure keyring
+(macOS Keychain, or the Secret Service / libsecret on Linux). If no keyring is
+available it falls back to a plaintext file at `~/.airwallex/credentials`
+(permissions `600`).
+
+| Variable | Description |
+|----------|-------------|
+| `AIRWALLEX_CREDENTIAL_STORE` | Set to `file` to always use the plaintext `~/.airwallex/credentials` file and skip the OS keyring. |
 
 ## Commands
 

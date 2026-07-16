@@ -167,8 +167,9 @@ check_writable() {
     fi
 }
 
-# Baked in at release time. Kept in sync with pyproject.toml by the CI check-version job.
-LATEST_VERSION="v0.2.1"
+# Baked in at release time. Kept in sync with internal/core/version/version.go
+# and the README version badge by the CI check-version job.
+LATEST_VERSION="v0.3.0"
 
 # Compute the SHA256 of $1 and echo the bare hex digest. Prefers
 # `sha256sum` (GNU coreutils, default on Linux); falls back to `shasum
@@ -248,8 +249,8 @@ main() {
     fi
     step "Version: ${BOLD}${VERSION}${RESET}"
 
-    # Strip a leading "v" so the asset filename matches the package version
-    # embedded in pyproject.toml (e.g. v0.1.0 -> 0.1.0).
+    # Strip a leading "v" so the asset filename matches the release version
+    # string (e.g. v0.1.0 -> 0.1.0).
     version_no_v=${VERSION#v}
 
     platform=$(detect_platform)
