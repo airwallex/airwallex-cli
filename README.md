@@ -1,6 +1,6 @@
 # Airwallex CLI
 
-![Version](https://img.shields.io/badge/version-0.3.0-orange)
+![Version](https://img.shields.io/badge/version-0.3.1-orange)
 
 The Airwallex CLI helps you manage your Airwallex account right from the terminal.
 
