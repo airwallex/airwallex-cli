@@ -40,17 +40,6 @@ airwallex auth login --prod
 airwallex [command] --help
 ```
 
-## Credential storage
-
-The CLI stores your OAuth tokens in your operating system's secure keyring
-(macOS Keychain, or the Secret Service / libsecret on Linux). If no keyring is
-available it falls back to a plaintext file at `~/.airwallex/credentials`
-(permissions `600`).
-
-| Variable | Description |
-|----------|-------------|
-| `AIRWALLEX_CREDENTIAL_STORE` | Set to `file` to always use the plaintext `~/.airwallex/credentials` file and skip the OS keyring. |
-
 ## Commands
 
 - `auth` — sign in and inspect the current session
