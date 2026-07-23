@@ -167,8 +167,7 @@ check_writable() {
     fi
 }
 
-# Baked in at release time. Kept in sync with internal/core/version/version.go
-# and the README version badge by the CI check-version job.
+# Baked in at release time; kept in sync by the CI check-version job.
 LATEST_VERSION="v0.3.1"
 
 # Compute the SHA256 of $1 and echo the bare hex digest. Prefers
