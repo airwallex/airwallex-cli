@@ -168,7 +168,7 @@ check_writable() {
 }
 
 # Baked in at release time; kept in sync by the CI check-version job.
-LATEST_VERSION="v0.3.1"
+LATEST_VERSION="v0.4.0"
 
 # Compute the SHA256 of $1 and echo the bare hex digest. Prefers
 # `sha256sum` (GNU coreutils, default on Linux); falls back to `shasum
