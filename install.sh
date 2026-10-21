@@ -3,6 +3,7 @@
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/airwallex/airwallex-cli/master/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/airwallex/airwallex-cli/master/install.sh | sh -s -- --uninstall
 #
 # Environment variables:
 #   AIRWALLEX_VERSION         pin a specific release (default: version bundled in script, e.g. v0.1.0)
@@ -168,7 +169,7 @@ check_writable() {
 }
 
 # Baked in at release time; kept in sync by the CI check-version job.
-LATEST_VERSION="v0.4.2"
+LATEST_VERSION="v0.5.0"
 
 # Compute the SHA256 of $1 and echo the bare hex digest. Prefers
 # `sha256sum` (GNU coreutils, default on Linux); falls back to `shasum
@@ -237,7 +238,32 @@ verify_checksum() {
     ok "Checksum OK (${DIM}${_actual}${RESET})"
 }
 
+# Remove the binary, leaving credentials, state, and the PATH entry alone —
+# removing the binary is what stops it shadowing an npm install.
+uninstall() {
+    header
+
+    _target="${INSTALL_DIR}/${BIN_NAME}"
+    if [ -e "$_target" ]; then
+        [ -w "$INSTALL_DIR" ] || err "Cannot remove $_target ($INSTALL_DIR is not writable). Re-run with sudo."
+        rm -f "$_target"
+        ok "Removed ${BOLD}${_target}${RESET}"
+    else
+        ok "Nothing to remove — no ${BIN_NAME} at ${DIM}${_target}${RESET}"
+    fi
+
+    printf '\n  %sKept: credentials (~/.airwallex) and state (%s).%s\n\n' \
+        "$DIM" "$STATE_DIR" "$RESET"
+    exit 0
+}
+
 main() {
+    case "${1:-}" in
+        --uninstall) uninstall ;;
+        '') ;;
+        *) err "Unknown option: $1 (supported: --uninstall)" ;;
+    esac
+
     command -v curl >/dev/null 2>&1 || err "curl is required but not installed"
     command -v tar  >/dev/null 2>&1 || err "tar is required but not installed"
 
