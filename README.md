@@ -1,6 +1,6 @@
 # Airwallex CLI
 
-![Version](https://img.shields.io/badge/version-0.4.2-orange)
+![Version](https://img.shields.io/badge/version-0.5.0-orange)
 
 The Airwallex CLI helps you manage your Airwallex account right from the terminal.
 
@@ -12,23 +12,24 @@ The Airwallex CLI helps you manage your Airwallex account right from the termina
 
 ## Installation
 
-Airwallex CLI is available for macOS and Linux as a single self-contained binary.
-
-Auto-detects your OS and architecture, verifies the SHA256 checksum, and installs to `~/.local/bin/airwallex`:
+macOS and Linux.
 
 ```sh
 curl -fsSL https://static.airwallex.com/developer-tools/airwallex-cli/install.sh | sh
 ```
 
-Environment variables:
+Or, if you have Node installed:
 
-| Variable | Description |
-|----------|-------------|
-| `AIRWALLEX_VERSION` | Pin a specific release tag (e.g. `v0.1.0`). Defaults to the version bundled in the installer script. |
-| `AIRWALLEX_INSTALL_DIR` | Install location. Defaults to `$HOME/.local/bin`. |
-| `AIRWALLEX_SKIP_CHECKSUM` | **Local development only.** Set to `1` to bypass SHA256 verification. Never use this in production or CI. |
+```sh
+npm install -g @airwallex/cli
+```
 
-Exit codes: `0` success, `1` generic failure, `2` unsupported platform, `3` checksum mismatch, `4` network failure.
+Pick one. If you already installed with curl, that copy stays ahead of the npm
+one on your `PATH` — check with `which -a airwallex`, and remove it with:
+
+```sh
+curl -fsSL https://static.airwallex.com/developer-tools/airwallex-cli/install.sh | sh -s -- --uninstall
+```
 
 ## Quickstart
 
@@ -42,7 +43,7 @@ airwallex [command] --help
 
 ## Commands
 
-- `auth` — sign in and inspect the current session
+- `auth` — sign in and inspect the current OAuth session
 - `balances` — view balance activity and totals
 - `beneficiaries`, `beneficiary-schema` — manage payout beneficiaries
 - `billing-customers`, `billing-checkouts`, `billing-transactions` — billing
